@@ -1,9 +1,18 @@
+// Página de Renderização Geral
+
+import './index.css';
+
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import RoutesApp from './routes';
+
+
 function App() {
 
-  return(
-  <>
-    <h1>Olá Mundo</h1>
-  </>
+  return (
+    <BrowserRouter>
+      <RoutesApp />
+    </BrowserRouter>
   )
 }
 
