@@ -17,4 +17,7 @@ function RoutesApp(){
     );
 }
 
+// path = caminho usado para acessar a rota
+// element = qual será o arquivo acessado na rota
+
 export default RoutesApp;

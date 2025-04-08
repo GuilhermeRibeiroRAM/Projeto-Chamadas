@@ -10,7 +10,10 @@ import { authContext } from '../../contexts/auth';
 
 export default function SignIn() {
 
-  const [email, setEmail] = useState('');
+  // Armazenando dados do usuário a partir das States
+  // Estado atual: email
+  // Função usada para atualizar o estado: setEmail
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
 
   const { SignIn } = useContext(authContext);
@@ -37,7 +40,7 @@ export default function SignIn() {
             type="text"
             placeholder="email@email.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)} // Todos os dados que o usário digitar será captado pelo evento (e) e serão armazenados na state "setEmail"
           />
 
           <input

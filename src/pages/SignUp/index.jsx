@@ -16,8 +16,8 @@ export default function SignUp() {
 
     const { SignUp, loadingAuth } = useContext(authContext);
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+    async function handleSubmit(e) { // O evento será reprensentado pelos dados inseridos pelo usuário antes da submissão
+        e.preventDefault(); // Função utilizada para cancelar o evento se ele for cancelável, o que significa que a ação padrão que pertence ao evento não ocorrerá
 
         if (name !== '' && email !== '' && password !== '') {
           await SignUp(name, email, password)
@@ -33,14 +33,14 @@ export default function SignUp() {
                     <img src={logo} alt="Logo do sistema de chamados" />
                 </div>
 
-                <form onSubmit={handleSubmit}>
-                    <h1>Cadastrar Conta</h1>
+                <form onSubmit={handleSubmit}> 
+                    <h1>Cadastrar Conta</h1> 
 
                     <input
                         type="text"
                         placeholder="Nome Completo"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setName(e.target.value)} 
                     />
 
                     <input

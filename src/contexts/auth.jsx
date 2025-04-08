@@ -6,12 +6,11 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Criação do Contexto
-
 export const authContext = createContext({});
 
 // Provedor do Contexto
-
-function AuthProvider({ children }) {
+// No provedor do contexto terá toda a parte direcionada aos métodos e toda a lógica
+function AuthProvider({ children }) { // O children é uma prop especial que representa todo o conteúdo que será encapsulado dentro do componente AuthProvider quando ele for usado
 
     const [user, setUser] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(false);
@@ -58,6 +57,7 @@ function AuthProvider({ children }) {
     }
 
     return (
+        // Provendo o Contexto criado (authContext)
         <authContext.Provider
             value={{
                 signed: !!user,
@@ -66,7 +66,7 @@ function AuthProvider({ children }) {
                 SignUp,
                 loadingAuth
             }}>
-            {children}
+            {children} 
         </authContext.Provider>
     );
 }
