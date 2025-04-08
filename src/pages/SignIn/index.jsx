@@ -3,28 +3,35 @@
 import { useState, useContext } from 'react'
 import './signin.css';
 
+// useContext = um Hook que permite a utilização dos contextos
+
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
 
 import { authContext } from '../../contexts/auth';
+
+import { toast } from 'react-toastify';
 
 export default function SignIn() {
 
   // Armazenando dados do usuário a partir das States
   // Estado atual: email
   // Função usada para atualizar o estado: setEmail
-  const [email, setEmail] = useState(''); 
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { SignIn } = useContext(authContext);
+  const { SignIn, loadingAuth } = useContext(authContext);
 
-  function handleSignIn(e){
-      e.preventDefault();
-      
-      if(email!=='' && password!==''){
-        SignIn(email, password); 
+  async function handleSignIn(e) {
+    e.preventDefault();
+
+    if (email !== '' && password !== '') {
+      await SignIn(email, password);
     }
-    
+    else {
+      toast.error("Insira todos os Dados!");
+    }
+
   }
 
   return (
@@ -50,7 +57,9 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">Acessar</button>
+          <button type="submit">
+            {loadingAuth ? 'Carregando...' : 'Cadastrar'}
+          </button>
         </form>
 
         <Link to="/register">Criar uma conta</Link>
